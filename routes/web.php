@@ -18,8 +18,13 @@ Route::get('/', function () {
 });
 
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
 
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::get('/', function () {
+//     return view('layouts.home');
+// })->name('home');
