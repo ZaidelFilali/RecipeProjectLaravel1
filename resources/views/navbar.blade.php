@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             Alpina's Recipes
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Recipes</a>
@@ -31,11 +31,11 @@
                         <a class="dropdown-item" href="#">Dessert</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                <li class="nav-item ml-2"> 
+                    <a class="nav-link text-primary" href="{{ route('login') }}">Login</a> 
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">Register</a>
+                <li class="nav-item ml-2"> 
+                    <a class="nav-link text-primary" href="{{ route('register') }}">Register</a> 
                 </li>
             </ul>
         </div>

@@ -17,14 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-// Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
-
-// Auth::routes();
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegisterForm'])->name('register');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Route::get('/', function () {
-//     return view('layouts.home');
-// })->name('home');
