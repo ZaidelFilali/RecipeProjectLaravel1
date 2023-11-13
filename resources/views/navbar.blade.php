@@ -31,12 +31,24 @@
                         <a class="dropdown-item" href="#">Dessert</a>
                     </div>
                 </li>
-                <li class="nav-item ml-2"> 
-                    <a class="nav-link text-primary" href="{{ route('login') }}">Login</a> 
-                </li>
-                <li class="nav-item ml-2"> 
-                    <a class="nav-link text-primary" href="{{ route('register') }}">Register</a> 
-                </li>
+
+                @guest
+                    <li class="nav-item ml-2">
+                        <a class="nav-link text-primary" href="{{ route('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item ml-2">
+                        <a class="nav-link text-primary" href="{{ route('register') }}">Register</a>
+                    </li>
+                @else
+        
+                    <li class="nav-item ml-2">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-link nav-link">Logout</button>
+                    <input type="hidden" name="_next" value="{{ route('home') }}">
+                    </form>
+                    </li>
+                @endguest
             </ul>
         </div>
     </div>
