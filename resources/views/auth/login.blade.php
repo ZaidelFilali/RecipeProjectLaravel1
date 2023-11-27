@@ -11,6 +11,12 @@
                 </div>
 
                 <div class="card-body">
+                    @if(session('registered'))
+                        <div class="alert alert-success" role="alert">
+                            Je bent succesvol geregistreerd! Log hieronder in.
+                        </div>
+                    @endif
+
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
