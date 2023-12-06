@@ -1,4 +1,3 @@
-<!-- resources/views/recipes/create.blade.php -->
 @extends('layouts.app') 
 @include('partials._navbar')
 @section('content')
@@ -52,21 +51,21 @@
 
             <div id="ingredientFields">
                 <div class="form-group">
-                    <label for="ingredient_name">Ingredient Name:</label>
-                    <input type="text" class="form-control" name="ingredient_name[]" required>
+                    <label for="ingredient_name[]">Ingredient Name:</label>
+                    <input type="text" class="form-control" name="ingredients[0][name]" required>
                 </div>
-
+            
                 <div class="form-group">
-                    <label for="ingredient_quantity">Ingredient Quantity:</label>
-                    <input type="number" class="form-control" name="ingredient_quantity[]" required>
+                    <label for="ingredient_quantity[]">Ingredient Quantity:</label>
+                    <input type="number" class="form-control" name="ingredients[0][quantity]" required>
                 </div>
-
+            
                 <div class="form-group">
-                    <label for="ingredient_units">Ingredient Units:</label>
-                    <input type="text" class="form-control" name="ingredient_units[]" required>
+                    <label for="ingredient_units[]">Ingredient Units:</label>
+                    <input type="text" class="form-control" name="ingredients[0][units]" required>
                 </div>
             </div>
-
+            
             <button type="button" class="btn btn-success" id="addIngredient">Add Ingredient</button>
 
             <button type="submit" class="btn btn-primary">Create Recipe</button>

@@ -1,4 +1,3 @@
-<!-- resources/views/recipes/edit.blade.php -->
 @extends('layouts.app') 
 @include('partials._navbar')
 @section('content')

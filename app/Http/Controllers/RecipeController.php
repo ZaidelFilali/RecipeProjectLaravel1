@@ -28,9 +28,20 @@ class RecipeController extends Controller
             'instructions' => 'required|string',
             'nutrition_values' => 'required|string',
             'picture' => 'required|string',
+            'ingredients' => 'array', 
+            'ingredients.*.name' => 'required|string',
+            'ingredients.*.quantity' => 'required|string',
+            'ingredients.*.units' => 'required|string',
         ]);
 
-        Recipe::create($request->all());
+        $recipe = Recipe::create($request->only([
+            'name', 'description', 'minutes', 'instructions', 'nutrition_values', 'picture'
+        ]));
+
+        foreach ($request->input('ingredients') as $ingredientData) {
+            $ingredient = new Ingredient($ingredientData);
+            $recipe->ingredients()->save($ingredient);
+        }
 
         return redirect()->route('admin.dashboard')->with('success', 'Recipe created successfully.');
     }
@@ -65,6 +76,8 @@ class RecipeController extends Controller
 
     public function destroy(Recipe $recipe)
     {
+        $recipe->ingredients()->delete();
+
         $recipe->delete();
 
         return redirect()->route('admin.dashboard')->with('success', 'Recipe deleted successfully.');
@@ -72,7 +85,7 @@ class RecipeController extends Controller
 
     public function welcome()
     {
-    $featuredRecipes = Recipe::limit(3)->get(); // Get a few featured recipes
+    $featuredRecipes = Recipe::limit(3)->get(); 
     return view('home.welcome', compact('featuredRecipes'));
     }
 }

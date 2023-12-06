@@ -1,10 +1,8 @@
-<!-- resources/views/partials/_footer.blade.php -->
-
 <footer class="bg-dark text-light py-3">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
-                <h4>Alpina Recipes</h4>
+                <h4>Alpina's Recipes</h4>
                 <p>Discover delicious recipes and enjoy cooking!</p>
             </div>
             <div class="col-lg-4">
