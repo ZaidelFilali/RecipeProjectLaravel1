@@ -1,23 +1,20 @@
-<footer class="bg-dark text-light py-5">
+<!-- resources/views/partials/_footer.blade.php -->
+
+<footer class="bg-dark text-light py-3">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
-                <h4>Alpina Recepten</h4>
-                <ul class="list-unstyled">
-                    <li><a href="#">Ontbijt</a></li>
-                    <li><a href="#">Lunch</a></li>
-                    <li><a href="#">Diner</a></li>
-                    <li><a href="#">Desserts</a></li>
-                </ul>
+                <h4>Alpina Recipes</h4>
+                <p>Discover delicious recipes and enjoy cooking!</p>
             </div>
             <div class="col-lg-4">
                 <h4>Volg Ons</h4>
-                <ul class="list-unstyled">
-                    <li><a href="#" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
-                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
-                    <li><a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    <li><a href="#" target="_blank"><i class="fab fa-pinterest"></i> Pinterest</a></li>
-                </ul>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><img src="{{ asset('images/Facebook.png') }}" alt="Facebook" class="social-icon"></a>
+                    <a href="#" target="_blank"><img src="{{ asset('images/Twitter.png') }}" alt="Twitter" class="social-icon"></a>
+                    <a href="#" target="_blank"><img src="{{ asset('images/Instagram.png') }}" alt="Instagram" class="social-icon"></a>
+                    <a href="#" target="_blank"><img src="{{ asset('images/Pinterest.png') }}" alt="Pinterest" class="social-icon"></a>
+                </div>
             </div>
             <div class="col-lg-4">
                 <h4>Contact</h4>
