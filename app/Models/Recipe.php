@@ -18,10 +18,10 @@ class Recipe extends Model
         'picture',
     ];
 
-    // public function ingredients()
-    // {
-    //     return $this->hasMany(Ingredient::class);
-    // }
+    public function ingredients()
+    {
+        return $this->hasMany(Ingredient::class);
+    }
 
     // public function nutritions()
     // {

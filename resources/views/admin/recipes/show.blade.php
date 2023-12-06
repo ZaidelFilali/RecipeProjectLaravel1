@@ -1,6 +1,5 @@
-<!-- resources/views/recipes/show.blade.php -->
 @extends('layouts.app') 
-@include('navbar')
+@include('partials._navbar')
 @section('content')
     <div class="container mt-5">
         <h1>{{ $recipe->name }}</h1>
@@ -14,7 +13,15 @@
                 <p class="card-text"><strong>Picture:</strong> {{ $recipe->picture }}</p>
             </div>
         </div>
-
-        <a href="{{ route('recipes.index') }}" class="btn btn-primary">Back to Recipes</a>
+        <h2>Ingredients</h2>
+        <ul>
+            @forelse($ingredients as $ingredient)
+                <li>{{ $ingredient->name }} - {{ $ingredient->quantity }} {{ $ingredient->units }}</li>
+            @empty
+                <li>No ingredients found.</li>
+            @endforelse
+        </ul>
+        
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Back to Recipes</a>
     </div>
 @endsection

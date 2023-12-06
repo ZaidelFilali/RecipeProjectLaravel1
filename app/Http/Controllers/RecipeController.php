@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
@@ -10,12 +11,12 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::all();
-        return view('recipes.index', compact('recipes'));
+        return view('admin.dashboard', compact('recipes'));
     }
 
     public function create()
     {
-        return view('recipes.create');
+        return view('admin.recipes.create');
     }
 
     public function store(Request $request)
@@ -31,18 +32,20 @@ class RecipeController extends Controller
 
         Recipe::create($request->all());
 
-        return redirect()->route('recipes.index')->with('success', 'Recipe created successfully.');
+        return redirect()->route('admin.dashboard')->with('success', 'Recipe created successfully.');
     }
 
     public function show(Recipe $recipe)
     {
-        return view('recipes.show', compact('recipe'));
+        $ingredients = Ingredient::where('recipe_id', $recipe->id)->get();
+        return view('admin.recipes.show', compact('recipe', 'ingredients'));
     }
 
     public function edit(Recipe $recipe)
     {
-        return view('recipes.edit', compact('recipe'));
+        return view('admin.recipes.edit', compact('recipe'));
     }
+    
 
     public function update(Request $request, Recipe $recipe)
     {
@@ -57,13 +60,19 @@ class RecipeController extends Controller
 
         $recipe->update($request->all());
 
-        return redirect()->route('recipes.index')->with('success', 'Recipe updated successfully.');
+        return redirect()->route('admin.dashboard')->with('success', 'Recipe updated successfully.');
     }
 
     public function destroy(Recipe $recipe)
     {
         $recipe->delete();
 
-        return redirect()->route('recipes.index')->with('success', 'Recipe deleted successfully.');
+        return redirect()->route('admin.dashboard')->with('success', 'Recipe deleted successfully.');
+    }
+
+    public function welcome()
+    {
+    $featuredRecipes = Recipe::limit(3)->get(); // Get a few featured recipes
+    return view('home.welcome', compact('featuredRecipes'));
     }
 }

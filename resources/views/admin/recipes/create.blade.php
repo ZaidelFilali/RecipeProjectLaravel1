@@ -1,6 +1,6 @@
 <!-- resources/views/recipes/create.blade.php -->
 @extends('layouts.app') 
-@include('navbar')
+@include('partials._navbar')
 @section('content')
     <div class="container mt-5">
         <h1>Create Recipe</h1>
@@ -48,9 +48,38 @@
                 <input type="text" class="form-control" name="picture" value="{{ old('picture') }}" required>
             </div>
 
+            <h2>Ingredients</h2>
+
+            <div id="ingredientFields">
+                <div class="form-group">
+                    <label for="ingredient_name">Ingredient Name:</label>
+                    <input type="text" class="form-control" name="ingredient_name[]" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ingredient_quantity">Ingredient Quantity:</label>
+                    <input type="number" class="form-control" name="ingredient_quantity[]" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ingredient_units">Ingredient Units:</label>
+                    <input type="text" class="form-control" name="ingredient_units[]" required>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-success" id="addIngredient">Add Ingredient</button>
+
             <button type="submit" class="btn btn-primary">Create Recipe</button>
         </form>
 
-        <a href="{{ route('recipes.index') }}" class="btn btn-secondary mt-3">Back to Recipes</a>
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary mt-3">Back to Recipes</a>
     </div>
+
+    <script>
+        document.getElementById('addIngredient').addEventListener('click', function () {
+            var ingredientFields = document.getElementById('ingredientFields');
+            var newIngredientField = ingredientFields.cloneNode(true);
+            ingredientFields.parentNode.appendChild(newIngredientField);
+        });
+    </script>
 @endsection

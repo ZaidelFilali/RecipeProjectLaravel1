@@ -1,6 +1,6 @@
 <!-- resources/views/recipes/edit.blade.php -->
 @extends('layouts.app') 
-@include('navbar')
+@include('partials._navbar')
 @section('content')
     <div class="container mt-5">
         <h1>Edit Recipe - {{ $recipe->name }}</h1>
@@ -52,6 +52,6 @@
             <button type="submit" class="btn btn-primary">Update Recipe</button>
         </form>
 
-        <a href="{{ route('recipes.index') }}" class="btn btn-secondary mt-3">Back to Recipes</a>
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary mt-3">Back to Recipes</a>
     </div>
 @endsection

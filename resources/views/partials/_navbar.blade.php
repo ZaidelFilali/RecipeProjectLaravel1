@@ -45,7 +45,7 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-link nav-link">Logout</button>
-                    <input type="hidden" name="_next" value="{{ route('home') }}">
+                    <input type="hidden" name="_next" value="{{ route('welcome.page') }}">
                     </form>
                     </li>
                 @endguest
