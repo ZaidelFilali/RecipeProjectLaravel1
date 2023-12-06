@@ -16,7 +16,7 @@ class CreateNutritionsTable extends Migration
             $table->string('units');
             $table->timestamps();
 
-            $table->foreign('recipe_id')->references('id')->on('recipes');
+            $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
         });
     }
 

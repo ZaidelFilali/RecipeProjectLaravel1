@@ -8,7 +8,6 @@
             @forelse($recipes as $recipe)
                 <li class="list-group-item">
                     <strong>{{ $recipe->name }}</strong>
-                    <span class="badge badge-secondary badge-pill">{{ $recipe->minutes }} mins</span>
                 </li>
             @empty
                 <li class="list-group-item">

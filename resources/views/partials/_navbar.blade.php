@@ -40,13 +40,12 @@
                         <a class="nav-link text-primary" href="{{ route('register') }}">Register</a>
                     </li>
                 @else
-        
                     <li class="nav-item ml-2">
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-link nav-link">Logout</button>
-                    <input type="hidden" name="_next" value="{{ route('welcome.page') }}">
-                    </form>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-link nav-link">Logout</button>
+                            <input type="hidden" name="_next" value="{{ route('welcome.page') }}">
+                        </form>
                     </li>
                 @endguest
             </ul>

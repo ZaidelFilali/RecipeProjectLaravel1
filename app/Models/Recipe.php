@@ -23,10 +23,10 @@ class Recipe extends Model
         return $this->hasMany(Ingredient::class);
     }
 
-    // public function nutritions()
-    // {
-    //     return $this->hasMany(Nutrition::class);
-    // }
+    public function nutritions()
+    {
+        return $this->hasMany(Nutrition::class);
+    }
 
     // public function instructions()
     // {
