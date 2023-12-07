@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Recipe;
 
 class DashboardController extends Controller
 {
     public function adminDashboard()
     {
-        return view('admin.dashboard');
+        $recipes = Recipe::all();
+        return view('admin.dashboard', compact('recipes'));
     }
 
     public function customerDashboard()

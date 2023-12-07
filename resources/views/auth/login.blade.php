@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@include('navbar')
+@include('partials._navbar')
 
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
