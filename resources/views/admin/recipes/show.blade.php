@@ -5,6 +5,7 @@
 @section('content')
     <div class="container mt-5">
         <h1>{{ $recipe->name }}</h1>
+        <p class="card-text"><strong>Picture:</strong> <img src="{{ asset('storage/images/' . $recipe->picture) }}" alt="Recipe Picture"></p>
 
         <div class="card mb-3">
             <div class="card-body">
@@ -12,7 +13,8 @@
                 <p class="card-text"><strong>Minutes:</strong> {{ $recipe->minutes }}</p>
                 <p class="card-text"><strong>Instructions:</strong> {{ $recipe->instructions }}</p>
                 <p class="card-text"><strong>Nutrition Values:</strong> {{ $recipe->nutrition_values }}</p>
-                <p class="card-text"><strong>Picture:</strong> {{ $recipe->picture }}</p>
+                <p class="card-text"><strong>Picture:</strong></p>
+                
             </div>
         </div>
 

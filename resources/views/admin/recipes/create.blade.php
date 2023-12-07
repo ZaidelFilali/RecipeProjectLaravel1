@@ -14,7 +14,7 @@
             </div>
         @endif
 
-        <form action="{{ route('recipes.store') }}" method="POST">
+        <form action="{{ route('recipes.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group">
@@ -44,9 +44,9 @@
 
             <div class="form-group">
                 <label for="picture">Picture:</label>
-                <input type="text" class="form-control" name="picture" value="{{ old('picture') }}" placeholder="https://example.com/spaghetti.jpg" required>
+                <input type="file" class="form-control" name="picture" accept="image/*">
             </div>
-
+            
             <h2>Ingredients</h2>
 
             <div id="ingredientFields">

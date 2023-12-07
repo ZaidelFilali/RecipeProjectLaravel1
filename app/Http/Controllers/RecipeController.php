@@ -28,7 +28,7 @@ class RecipeController extends Controller
             'minutes' => 'required|integer',
             'instructions' => 'required|string',
             'nutrition_values' => 'required|string',
-            'picture' => 'required|string',
+            'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'ingredients' => 'required|array|min:1',
             'ingredients.*.name' => 'required|string|max:255',
             'ingredients.*.quantity' => 'required|numeric',
@@ -52,7 +52,9 @@ class RecipeController extends Controller
             $nutrition = new Nutrition($nutritionData);
             $recipe->nutritions()->save($nutrition);
         }
-    
+
+        $this->handleImageUpload($request, $recipe);
+
         return redirect()->route('admin.dashboard')->with('success', 'Recipe created successfully.');
     }
 
@@ -77,11 +79,11 @@ class RecipeController extends Controller
             'minutes' => 'required|integer',
             'instructions' => 'required|string',
             'nutrition_values' => 'required|string',
-            'picture' => 'required|string',
+            'picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'ingredients' => 'array', 
         ]);
     
-        $recipe->update($request->only(['name', 'description', 'minutes', 'instructions', 'nutrition_values', 'picture']));
+        $recipe->update($request->only(['name', 'description', 'minutes', 'instructions', 'nutrition_values']));
     
         if ($request->has('ingredients') && is_array($request->input('ingredients'))) {
             foreach ($request->input('ingredients') as $ingredientId => $ingredientData) {
@@ -89,7 +91,9 @@ class RecipeController extends Controller
                 $ingredient->update($ingredientData);
             }
         }
-    
+
+        $this->handleImageUpload($request, $recipe);
+
         return redirect()->route('admin.dashboard')->with('success', 'Recipe updated successfully.');
     }
 
@@ -106,5 +110,15 @@ class RecipeController extends Controller
     {
     $featuredRecipes = Recipe::limit(3)->get(); 
     return view('home.welcome', compact('featuredRecipes'));
+    }
+    protected function handleImageUpload(Request $request, Recipe $recipe)
+    {
+    if ($request->hasFile('picture')) {
+        $file = $request->file('picture');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $file->storeAs('public/pictures', $fileName);
+
+        $recipe->update(['picture' => $fileName]);
+    }
     }
 }
